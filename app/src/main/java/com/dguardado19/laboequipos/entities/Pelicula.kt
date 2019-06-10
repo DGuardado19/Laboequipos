@@ -13,35 +13,4 @@ data class Pelicula(
     var annio: String,
     var titulo:String,
     var genero:String
-):Parcelable {
-    constructor(parcel: Parcel) : this(
-        parcel.readString(),
-        parcel.readString(),
-        parcel.readString(),
-        parcel.readString(),
-        parcel.readString()
-    ) {
-    }
-
-    override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeString(ibID)
-        parcel.writeString(foto)
-        parcel.writeString(annio)
-        parcel.writeString(titulo)
-        parcel.writeString(genero)
-    }
-
-    override fun describeContents(): Int {
-        return 0
-    }
-
-    companion object CREATOR : Parcelable.Creator<Pelicula> {
-        override fun createFromParcel(parcel: Parcel): Pelicula {
-            return Pelicula(parcel)
-        }
-
-        override fun newArray(size: Int): Array<Pelicula?> {
-            return arrayOfNulls(size)
-        }
-    }
-}
+)

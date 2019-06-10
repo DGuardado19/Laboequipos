@@ -17,7 +17,7 @@ interface CoincidenciaRetrofit{
 
 
     @GET("/")
-    fun obtenerPeliculas(@Query("s")clue : String, @Query("key") apikey:String) : Deferred<Response<RetroCoincidencias>>
+    fun obtenerPeliculas(@Query("s")clue : String, @Query("apixkey") apikey:String) : Deferred<Response<RetroCoincidencias>>
 
     companion object{
         fun getCoincidencias(): CoincidenciaRetrofit{
