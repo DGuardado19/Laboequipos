@@ -1,6 +1,7 @@
 package com.dguardado19.laboequipos.viewModel
 
 import android.app.Application
+import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
@@ -37,6 +38,7 @@ class peliculasViewModel(private val app: Application): AndroidViewModel(app){
         if(response.isSuccessful)with(response.body()?.Search){
             this?.forEach {
                 this@peliculasViewModel.insert(it)
+                Log.d("respuesta",it.toString())
             }
         }else with(response){
             when(this.code()){

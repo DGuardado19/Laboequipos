@@ -7,10 +7,9 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "peliculas_table")
 data class Pelicula(
+    var Title:String,
     @PrimaryKey
-    var ibID: String,
-    var foto:String,
-    var annio: String,
-    var titulo:String,
-    var genero:String
-)
+    var imdbID:String,
+    var Type:String,
+    var Year:String,
+    var Poster: String)
