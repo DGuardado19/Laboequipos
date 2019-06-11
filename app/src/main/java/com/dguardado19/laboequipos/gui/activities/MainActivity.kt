@@ -2,32 +2,30 @@ package com.dguardado19.laboequipos.gui.activities
 
 import android.content.Intent
 import android.content.res.Configuration
-import android.os.AsyncTask
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat.startActivity
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.ViewModelProviders
 import com.dguardado19.laboequipos.R
 import com.dguardado19.laboequipos.entities.Movie
 import com.dguardado19.laboequipos.gui.fragments.MainContentFragment
 import com.dguardado19.laboequipos.gui.fragments.MainListFragment
 import com.dguardado19.laboequipos.gui.utils.AppConstants
-import com.google.gson.Gson
-import org.json.JSONObject
+import com.dguardado19.laboequipos.viewModel.peliculasViewModel
 import retrofit2.Retrofit
-import java.io.IOException
 
 class MainActivity : AppCompatActivity(), MainListFragment.SearchNewMovieListener {
     private lateinit var mainFragment : MainListFragment
     private lateinit var mainContentFragment: MainContentFragment
+    private lateinit var peliculasViewModel: peliculasViewModel
 
     private var movieList = ArrayList<Movie>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        var f = Retrofit.Builder()
-        f.baseUrl("F")
+        peliculasViewModel = ViewModelProviders.of(this).get(com.dguardado19.laboequipos.viewModel.peliculasViewModel::class.java)
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         movieList = savedInstanceState?.getParcelableArrayList(AppConstants.dataset_saveinstance_key) ?: ArrayList()
@@ -61,7 +59,14 @@ class MainActivity : AppCompatActivity(), MainListFragment.SearchNewMovieListene
         Log.d("Number", movieList.size.toString())
     }
 
+    fun changeMovieList(allMovies: LiveData<List<Movie>>) {
+        movieList = allMovies.value as ArrayList<Movie>
+        mainFragment.updateMoviesAdapter(movieList)
+    }
+
     override fun searchMovie(movieName: String) {
+        changeMovieList(peliculasViewModel.getAllMovies())
+       // addMovieToList(peliculasViewModel.getAllMovies())
        // FetchMovie().execute(movieName)
     }
 
