@@ -8,7 +8,7 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="horizontal"
-        tools:context=".MainActivity">
+        tools:context=".gui.activities.MainActivity">
 
     <FrameLayout
             android:id="@+id/land_main_fragment"

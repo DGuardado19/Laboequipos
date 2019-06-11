@@ -3,7 +3,7 @@ package com.dguardado19.laboequipos.repository
 import androidx.annotation.WorkerThread
 import androidx.lifecycle.LiveData
 import com.dguardado19.laboequipos.dao.PeliculasDao
-import com.dguardado19.laboequipos.entities.Pelicula
+import com.dguardado19.laboequipos.entities.Movie
 import com.dguardado19.laboequipos.entities.RetroCoincidencias
 import com.dguardado19.laboequipos.retrofit.CoincidenciaRetrofit
 import kotlinx.coroutines.Deferred
@@ -20,10 +20,10 @@ class peliculaRepository (private val Pelicula: PeliculasDao){
         return Pelicula.deletePeliculas()
     }
     @WorkerThread
-    suspend fun insertPeli(peli: Pelicula){
+    suspend fun insertPeli(peli: Movie){
         Pelicula.insertPelicula(peli)
     }
-    fun getAllPeliculas(): LiveData<List<Pelicula>> {
+    fun getAllPeliculas(): LiveData<List<Movie>> {
         return Pelicula.getAllPeliculas()
     }
 
