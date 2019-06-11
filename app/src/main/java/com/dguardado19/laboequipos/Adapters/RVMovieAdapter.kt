@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.dguardado19.laboequipos.R
 import com.dguardado19.laboequipos.entities.Movie
 import kotlinx.android.synthetic.main.cardview_movie.view.*
