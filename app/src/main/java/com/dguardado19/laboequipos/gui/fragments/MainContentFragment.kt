@@ -35,8 +35,8 @@ class MainContentFragment: Fragment() {
         view.movie_title_main_content_fragment.text = movie.Title
         view.movie_rate_main_content_fragment.text = movie.imdbRating
         view.plot_main_content_fragment.text = movie.Plot
-        view.released_main_content_fragment.text = movie.Released
-        view.genre_main_content_fragment.text = movie.Genre
+       // view.released_main_content_fragment.text = movie.Released
+        //view.genre_main_content_fragment.text = movie.Genre
         view.runtime_main_content_fragment.text = movie.Runtime
         Glide.with(view).load(movie.Poster)
             .placeholder(R.drawable.ic_launcher_background)

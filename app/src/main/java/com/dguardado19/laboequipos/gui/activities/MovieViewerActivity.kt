@@ -18,13 +18,13 @@ class MovieViewerActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.viewer_movie)
 
-        setSupportActionBar(toolbarviewer as Toolbar)
+        setSupportActionBar(toolbarviewer)
         //supportActionBar?.setDisplayHomeAsUpEnabled(true)
         //supportActionBar?.setDisplayShowHomeEnabled(true)
-        var collapsingToolbarLayout = collapsingtoolbarviewer as CollapsingToolbarLayout
 
-        (collapsingtoolbarviewer as CollapsingToolbarLayout).setExpandedTitleTextAppearance(R.style.ExpandedAppBar)
-        (collapsingtoolbarviewer as CollapsingToolbarLayout).setCollapsedTitleTextAppearance(R.style.CollapsedAppBar)
+
+        collapsingtoolbarviewer.setExpandedTitleTextAppearance(R.style.ExpandedAppBar)
+        collapsingtoolbarviewer.setCollapsedTitleTextAppearance(R.style.CollapsedAppBar)
 
         val reciever: Movie = intent?.extras?.getParcelable("MOVIE") ?: Movie("N/A","N/A","N/A","N/A","N/A","N/A","N/A","N/A")
         init(reciever)
@@ -35,13 +35,13 @@ class MovieViewerActivity: AppCompatActivity() {
             .load(movie.Poster)
             .placeholder(R.drawable.ic_launcher_background)
             .into(app_bar_image_viewer)
-        (collapsingtoolbarviewer as CollapsingToolbarLayout).title = movie.Title
+        collapsingtoolbarviewer.title = movie.Title
         app_bar_rating_viewer.text = movie.imdbRating
         plot_viewer.text = movie.Plot
-        director_viewer.text = movie.Director
-        actors_viewer.text = movie.Actors
-        genre_viewer.text = movie.Genre
-        released_viewer.text = movie.Released
+        //director_viewer.text = movie.Director
+      //  actors_viewer.text = movie.Actors
+     //   genre_viewer.text = movie.Genre
+        //released_viewer.text = movie.Released
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

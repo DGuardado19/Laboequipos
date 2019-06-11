@@ -24,16 +24,26 @@ data class Movie(
         parcel.readString(),
         parcel.readString(),
         parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
         parcel.readString()
     ) {
     }
 
-    override fun writeToParcel(dest: Parcel?, flags: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeString(Title)
+        parcel.writeString(imdbID)
+        parcel.writeString(Type)
+        parcel.writeString(Year)
+        parcel.writeString(Poster)
+        parcel.writeString(Plot)
+        parcel.writeString(imdbRating)
+        parcel.writeString(Runtime)
     }
 
     override fun describeContents(): Int {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return 0
     }
 
     companion object CREATOR : Parcelable.Creator<Movie> {

@@ -14,6 +14,8 @@ import com.dguardado19.laboequipos.gui.adapters.MovieAdapter
 import com.dguardado19.laboequipos.gui.adapters.MovieSimpleListAdapter
 import com.dguardado19.laboequipos.gui.utils.AppConstants
 import com.dguardado19.laboequipos.gui.utils.MyMovieAdapter
+import kotlinx.android.synthetic.main.movies_list_fragment.*
+import kotlinx.android.synthetic.main.movies_list_fragment.view.*
 
 class MainListFragment: Fragment(){
 
@@ -54,6 +56,7 @@ class MainListFragment: Fragment(){
 
         if(orientation == Configuration.ORIENTATION_PORTRAIT){
             moviesAdapter = MovieAdapter(movies, {movie:Movie->listenerTool?.managePortraitItemClick(movie)})
+
             container.movie_list_rv.adapter = moviesAdapter as MovieAdapter
 
         }
@@ -74,7 +77,8 @@ class MainListFragment: Fragment(){
 
     fun updateMoviesAdapter(movieList: ArrayList<Movie>){ moviesAdapter.changeDataSet(movieList) }
 
-    override fun onAttach(context: Context?) {
+
+    override fun onAttach(context: Context) {
         super.onAttach(context)
         if (context is SearchNewMovieListener) {
             listenerTool = context
