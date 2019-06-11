@@ -5,10 +5,9 @@ import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dguardado19.laboequipos.RoomDB
-import com.dguardado19.laboequipos.entities.Pelicula
+import com.dguardado19.laboequipos.entities.Movie
 import com.dguardado19.laboequipos.repository.peliculaRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -21,12 +20,12 @@ class peliculasViewModel(private val app: Application): AndroidViewModel(app){
         repository= peliculaRepository(PeliculasDao)
     }
 
-    fun getAllMovies(): LiveData<List<Pelicula>>{
+    fun getAllMovies(): LiveData<List<Movie>>{
         return repository.getAllPeliculas()
     }
 
-    fun  insert(pelicula: Pelicula) = viewModelScope.launch (Dispatchers.IO){
-        repository.insertPeli(pelicula)
+    fun  insert(movie: Movie) = viewModelScope.launch (Dispatchers.IO){
+        repository.insertPeli(movie)
     }
     private suspend fun nuke()= repository.nuke()
 
