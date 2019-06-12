@@ -11,13 +11,30 @@ import com.dguardado19.laboequipos.gui.fragments.MainContentFragment
 import com.dguardado19.laboequipos.gui.fragments.MainListFragment
 import com.dguardado19.laboequipos.gui.utils.AppConstants
 import com.dguardado19.laboequipos.viewModel.peliculasViewModel
+import android.net.NetworkInfo
+import android.content.Context.CONNECTIVITY_SERVICE
+import androidx.core.content.ContextCompat.getSystemService
+import android.net.ConnectivityManager
+import android.content.Context
+
 
 class MainActivity : AppCompatActivity(), MainListFragment.SearchNewMovieListener {
+    override fun internetx(): Boolean = isNetworkAvailable()
+
+
     private lateinit var mainFragment : MainListFragment
     private lateinit var mainContentFragment: MainContentFragment
     private var resource = 0
 
     private var movieList = ArrayList<Movie>()
+
+
+     fun isNetworkAvailable(): Boolean {
+        val connectivityManager = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val activeNetworkInfo = connectivityManager.activeNetworkInfo
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         //peliculasViewModel = ViewModelProviders.of(this).get(peliculasViewModel::class.java)

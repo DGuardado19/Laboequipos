@@ -22,6 +22,9 @@ import kotlinx.android.synthetic.main.movies_list_fragment.view.*
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.Toast
+import androidx.core.content.ContextCompat
+import com.dguardado19.laboequipos.gui.activities.MainActivity
+import com.google.android.material.snackbar.Snackbar
 
 
 class MainListFragment: Fragment(){
@@ -45,8 +48,12 @@ class MainListFragment: Fragment(){
         }
     }*/
 
+
+
+
     interface SearchNewMovieListener{
         //fun searchMovie(movieName: String)
+        fun internetx() : Boolean
 
         fun managePortraitItemClick(movie: Movie)
 
@@ -70,16 +77,24 @@ class MainListFragment: Fragment(){
         val net = cm.activeNetworkInfo
 
         btn.setOnClickListener {
+            if (listenerTool!!.internetx()){
+                viewModel.retrievePelis(searchEt.text.toString())
+            }else{
 
+                Snackbar.make(view,"No hay una conexión a internet activa",Snackbar.LENGTH_SHORT).show()
+                //Toast.makeText(this.context, "No hay una conexión a internet activa", Toast.LENGTH_SHORT).show()
+            }
+            /*
             if(net != null && net.isConnected){
                 viewModel.retrievePelis(searchEt.text.toString())
             } else{
                 Toast.makeText(this.context, "No hay una conexión a internet activa", Toast.LENGTH_SHORT).show()
-            }
+            }*/
         }
 
         return view
     }
+
 
     fun initRecyclerView(orientation:Int, container: View){
         val linearLayoutManager = LinearLayoutManager(this.context)
