@@ -42,7 +42,7 @@
 
             <TextView
                 android:id="@+id/plot_main_content_fragment"
-
+                android:textColor="@android:color/black"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingLeft="8dp"
@@ -61,6 +61,7 @@
             >
 
                 <TextView
+                        android:textColor="@android:color/black"
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
@@ -73,6 +74,7 @@
                 />
 
                 <TextView
+                        android:textColor="@android:color/black"
                         android:id="@+id/movie_rate_main_content_fragment"
                         android:layout_width="0dp"
                         android:layout_weight="3"
@@ -94,18 +96,20 @@
                 android:layout_marginBottom="8dp">
 
                 <TextView
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="8dp"
-                    android:paddingRight="8dp"
-                    android:layout_marginBottom="4dp"
-                    android:text="Año:"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    />
+                        android:textColor="@android:color/black"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp"
+                        android:layout_marginBottom="4dp"
+                        android:text="Year:"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                />
 
                 <TextView
+                        android:textColor="@android:color/black"
                     android:id="@+id/released_main_content_fragment"
                     android:layout_width="0dp"
                     android:layout_weight="3"
@@ -128,19 +132,21 @@
                 >
 
                 <TextView
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="8dp"
-                    android:paddingRight="8dp"
-                    android:layout_marginBottom="4dp"
+                        android:textColor="@android:color/black"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp"
+                        android:layout_marginBottom="4dp"
 
-                    android:text="Genero:"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    />
+                        android:text="Genre:"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                />
 
                 <TextView
+                        android:textColor="@android:color/black"
                     android:id="@+id/genre_main_content_fragment"
 
                     android:layout_width="0dp"
@@ -164,19 +170,21 @@
                 >
 
                 <TextView
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="8dp"
-                    android:paddingRight="8dp"
-                    android:layout_marginBottom="4dp"
+                        android:textColor="@android:color/black"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp"
+                        android:layout_marginBottom="4dp"
 
-                    android:text="Duración:"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    />
+                        android:text="Runtime:"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                />
 
                 <TextView
+                        android:textColor="@android:color/black"
                     android:id="@+id/runtime_main_content_fragment"
 
                     android:layout_width="0dp"
@@ -200,6 +208,7 @@
                 >
 
                 <TextView
+                        android:textColor="@android:color/black"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
@@ -213,6 +222,7 @@
                     />
 
                 <TextView
+                        android:textColor="@android:color/black"
                     android:id="@+id/director_main_content_fragment"
 
                     android:layout_width="0dp"
@@ -236,6 +246,7 @@
                 >
 
                 <TextView
+                        android:textColor="@android:color/black"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
@@ -243,12 +254,13 @@
                     android:paddingRight="8dp"
                     android:layout_marginBottom="4dp"
 
-                    android:text="Actores:"
+                    android:text="Actors:"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     />
 
                 <TextView
+                        android:textColor="@android:color/black"
                     android:id="@+id/actors_main_content_fragment"
 
                     android:layout_width="0dp"
