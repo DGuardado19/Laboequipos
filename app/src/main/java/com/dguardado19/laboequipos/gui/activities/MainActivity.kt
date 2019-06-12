@@ -15,7 +15,7 @@ import com.dguardado19.laboequipos.viewModel.peliculasViewModel
 class MainActivity : AppCompatActivity(), MainListFragment.SearchNewMovieListener {
     private lateinit var mainFragment : MainListFragment
     private lateinit var mainContentFragment: MainContentFragment
-    private lateinit var peliculasViewModel: peliculasViewModel
+    private var resource = 0
 
     private var movieList = ArrayList<Movie>()
 
@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity(), MainListFragment.SearchNewMovieListene
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        movieList = savedInstanceState?.getParcelableArrayList(AppConstants.dataset_saveinstance_key) ?: ArrayList()
+        //movieList = savedInstanceState?.getParcelableArrayList(AppConstants.dataset_saveinstance_key) ?: ArrayList()
 
         initMainFragment()
     }
@@ -36,16 +36,16 @@ class MainActivity : AppCompatActivity(), MainListFragment.SearchNewMovieListene
     }
 
     fun initMainFragment(){
-        mainFragment = MainListFragment.newInstance(movieList)
+        mainFragment = MainListFragment()
+        mainContentFragment = MainContentFragment()
 
 
-        val resource = if(resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT)
-            R.id.main_fragment
-        else {
-            mainContentFragment = MainContentFragment.newInstance(Movie("N/A","N/A","N/A","N/A","N/A"))
+        if(resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT)
+            resource = R.id.main_fragment
+        if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE){
+            resource = R.id.land_main_fragment
+
             changeFragment(R.id.land_main_cont_fragment, mainContentFragment)
-
-            R.id.land_main_fragment
         }
 
         changeFragment(resource, mainFragment)

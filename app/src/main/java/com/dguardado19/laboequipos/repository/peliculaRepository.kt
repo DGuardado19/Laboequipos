@@ -15,6 +15,11 @@ class peliculaRepository (private val Pelicula: PeliculasDao){
         return CoincidenciaRetrofit.getCoincidencias().obtenerPeliculas(eje,apikey)
     }
 
+    fun getMovies(id: String) : Deferred<Response<Movie>>{
+        val apikey = "ffb96d82"
+        return CoincidenciaRetrofit.getFullDetails().detallesMovies(id,apikey)
+    }
+
     @WorkerThread
     suspend fun nuke(){
         return Pelicula.deletePeliculas()

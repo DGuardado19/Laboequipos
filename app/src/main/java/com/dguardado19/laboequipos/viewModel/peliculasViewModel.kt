@@ -11,6 +11,7 @@ import com.dguardado19.laboequipos.entities.Movie
 import com.dguardado19.laboequipos.repository.peliculaRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import retrofit2.Response
 
 class peliculasViewModel(private val app: Application): AndroidViewModel(app){
     private val repository: peliculaRepository
@@ -32,12 +33,11 @@ class peliculasViewModel(private val app: Application): AndroidViewModel(app){
 
     fun retrievePelis(eje:String)= viewModelScope.launch {
         this@peliculasViewModel.nuke()
-
         val response =repository.retrieveRepoAsync(eje).await()
         if(response.isSuccessful)with(response.body()?.Search){
             this?.forEach {
-                this@peliculasViewModel.insert(it)
-                Log.d("respuesta",it.toString())
+                //this@peliculasViewModel.insert(it)
+                getMovies(it.imdbID)
             }
         }else with(response){
             when(this.code()){
@@ -45,6 +45,14 @@ class peliculasViewModel(private val app: Application): AndroidViewModel(app){
                     Toast.makeText(app, "Nel", Toast.LENGTH_LONG).show()
                 }
             }
+        }
+    }
+
+    fun getMovies (id: String) = viewModelScope.launch {
+        this@peliculasViewModel.nuke()
+        val response = repository.getMovies(id).await()
+        if(response.isSuccessful)with(response.body()){
+            this@peliculasViewModel.insert(this!!)
         }
     }
 }

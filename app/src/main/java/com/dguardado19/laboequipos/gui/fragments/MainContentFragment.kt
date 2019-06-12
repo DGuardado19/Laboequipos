@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.main_content_fragment_layout.view.*
 
 class MainContentFragment: Fragment() {
 
-    lateinit var movie : Movie
+     var movie = Movie()
 
     companion object {
         fun newInstance(movie: Movie): MainContentFragment{
@@ -33,8 +33,8 @@ class MainContentFragment: Fragment() {
 
     fun bindData(view: View){
         view.movie_title_main_content_fragment.text = movie.Title
-        //view.movie_rate_main_content_fragment.text = movie.imdbRating
-        //view.plot_main_content_fragment.text = movie.Plot
+        view.movie_rate_main_content_fragment.text = movie.Country
+        view.plot_main_content_fragment.text = movie.Plot
        // view.released_main_content_fragment.text = movie.Released
         //view.genre_main_content_fragment.text = movie.Genre
         //view.runtime_main_content_fragment.text = movie.Runtime

@@ -26,7 +26,7 @@ import android.widget.Toast
 
 class MainListFragment: Fragment(){
 
-    private lateinit var  movies :ArrayList<Movie>
+    private val  movies = ArrayList<Movie>()
     private lateinit var moviesAdapter : MyMovieAdapter
     private var listenerTool :  SearchNewMovieListener? = null
     private lateinit var viewModel : peliculasViewModel
@@ -36,14 +36,14 @@ class MainListFragment: Fragment(){
     private lateinit var searchEt: EditText
 
 
-    companion object {
+    /*companion object {
         fun newInstance(dataset : ArrayList<Movie>): MainListFragment{
             val newFragment = MainListFragment()
             newFragment.movies = dataset
 
             return newFragment
         }
-    }
+    }*/
 
     interface SearchNewMovieListener{
         //fun searchMovie(movieName: String)
@@ -57,7 +57,7 @@ class MainListFragment: Fragment(){
         super.onCreateView(inflater, container, savedInstanceState)
         val view = inflater.inflate(R.layout.movies_list_fragment, container, false)
 
-        if(savedInstanceState != null) movies = savedInstanceState.getParcelableArrayList<Movie>(AppConstants.MAIN_LIST_KEY)!!
+        //if(savedInstanceState != null) movies = savedInstanceState.getParcelableArrayList<Movie>(AppConstants.MAIN_LIST_KEY)!!
 
         initRecyclerView(resources.configuration.orientation, view)
 
@@ -86,13 +86,13 @@ class MainListFragment: Fragment(){
 
 
         if(orientation == Configuration.ORIENTATION_PORTRAIT){
-            moviesAdapter = MovieAdapter(movies, {movie:Movie->listenerTool?.managePortraitItemClick(movie)})
+            moviesAdapter = MovieAdapter(movies = movies, clickListener = {movie:Movie->listenerTool?.managePortraitItemClick(movie)})
 
             container.movie_list_rv.adapter = moviesAdapter as MovieAdapter
 
         }
-        if(orientation == Configuration.ORIENTATION_LANDSCAPE){
-            moviesAdapter = MovieSimpleListAdapter(movies, {movie:Movie->listenerTool?.manageLandscapeItemClick(movie)})
+        else{
+            moviesAdapter = MovieSimpleListAdapter(movies = movies, clickListener = {movie:Movie->listenerTool?.manageLandscapeItemClick(movie)})
             container.movie_list_rv.adapter = moviesAdapter as MovieSimpleListAdapter
         }
 
@@ -129,10 +129,10 @@ class MainListFragment: Fragment(){
         listenerTool = null
     }
 
-    override fun onSaveInstanceState(outState: Bundle) {
+    /*override fun onSaveInstanceState(outState: Bundle) {
       //  outState.putParcelableArrayList(AppConstants.MAIN_LIST_KEY, movies)
         outState.putSerializable(AppConstants.MAIN_LIST_KEY,movies)
         super.onSaveInstanceState(outState)
-    }
+    }*/
 
 }

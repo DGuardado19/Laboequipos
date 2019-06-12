@@ -29,8 +29,8 @@ class MovieSimpleListAdapter(var movies:List<Movie>, val clickListener: (Movie) 
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         fun bind(movie: Movie, clickListener: (Movie) -> Unit) = with(itemView){
             title_list_item.text = movie.Title
-       //     genre_list_item.text = movie.Genre
-           // runtime_list_item.text = movie.Runtime
+            //     genre_list_item.text = movie.Genre
+            runtime_list_item.text = movie.Runtime
             this.setOnClickListener { clickListener(movie) }
         }
     }
