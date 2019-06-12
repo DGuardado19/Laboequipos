@@ -20,7 +20,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
                 android:background="@drawable/background_border"
-                android:hint="Buscar Pelicula"
+                android:hint="Search..."
                 android:textColor="#6E6E6E"
                 android:drawableStart="@drawable/movie"
                 android:drawableLeft="@drawable/movie"/>

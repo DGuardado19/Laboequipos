@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import com.dguardado19.laboequipos.dao.PeliculasDao
 import com.dguardado19.laboequipos.entities.Movie
 
-@Database(entities = [Movie::class],version = 9, exportSchema = false)
+@Database(entities = [Movie::class],version = 10, exportSchema = false)
 abstract class RoomDB : RoomDatabase(){
     abstract  fun PeliculaDao(): PeliculasDao
 

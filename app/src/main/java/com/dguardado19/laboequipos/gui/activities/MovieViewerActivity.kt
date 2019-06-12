@@ -35,13 +35,15 @@ class MovieViewerActivity: AppCompatActivity() {
             .load(movie.Poster)
             .placeholder(R.drawable.ic_launcher_background)
             .into(app_bar_image_viewer)
-            collapsingtoolbarviewer.title = movie.Title
+        collapsingtoolbarviewer.title = movie.Title
         app_bar_rating_viewer.text = movie.imdbRating
         plot_viewer.text = movie.Plot
-        //director_viewer.text = movie.Director
-      //  actors_viewer.text = movie.Actors
-     //   genre_viewer.text = movie.Genre
-        //released_viewer.text = movie.Released
+        director_viewer.text = movie.Director
+        actors_viewer.text = movie.Actors
+        genre_viewer.text = movie.Genre
+        released_viewer.text = movie.Released
+        rated_viewer.text = movie.Rated
+        country_viewer.text = movie.Country
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
