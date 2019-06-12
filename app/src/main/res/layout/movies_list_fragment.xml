@@ -20,12 +20,13 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
                 android:background="@drawable/background_border"
-                android:text="Buscar pelicula"
+                android:hint="Buscar Pelicula"
                 android:textColor="#6E6E6E"
                 android:drawableStart="@drawable/movie"
                 android:drawableLeft="@drawable/movie"/>
 
         <ImageButton
+                android:id="@+id/search_movie"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_margin="5dp"

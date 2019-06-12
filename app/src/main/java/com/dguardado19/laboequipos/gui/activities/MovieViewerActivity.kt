@@ -26,7 +26,7 @@ class MovieViewerActivity: AppCompatActivity() {
         collapsingtoolbarviewer.setExpandedTitleTextAppearance(R.style.ExpandedAppBar)
         collapsingtoolbarviewer.setCollapsedTitleTextAppearance(R.style.CollapsedAppBar)
 
-        val reciever: Movie = intent?.extras?.getParcelable("MOVIE") ?: Movie("N/A","N/A","N/A","N/A","N/A","N/A","N/A","N/A")
+        val reciever: Movie = intent?.extras?.getParcelable("MOVIE") ?: Movie("N/A","N/A","N/A","N/A","N/A")
         init(reciever)
     }
 
@@ -36,8 +36,8 @@ class MovieViewerActivity: AppCompatActivity() {
             .placeholder(R.drawable.ic_launcher_background)
             .into(app_bar_image_viewer)
         collapsingtoolbarviewer.title = movie.Title
-        app_bar_rating_viewer.text = movie.imdbRating
-        plot_viewer.text = movie.Plot
+        //app_bar_rating_viewer.text = movie.imdbRating
+        //plot_viewer.text = movie.Plot
         //director_viewer.text = movie.Director
       //  actors_viewer.text = movie.Actors
      //   genre_viewer.text = movie.Genre

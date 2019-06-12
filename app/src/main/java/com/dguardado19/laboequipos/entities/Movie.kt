@@ -13,10 +13,10 @@ data class Movie(
     var imdbID:String,
     var Type:String,
     var Year:String,
-    var Poster: String,
-    var Plot:String,
-    var imdbRating: String,
-    var Runtime: String
+    var Poster: String
+    //var Plot:String,
+    //var imdbRating: String,
+    //var Runtime: String
 
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
@@ -24,22 +24,20 @@ data class Movie(
         parcel.readString(),
         parcel.readString(),
         parcel.readString(),
-        parcel.readString(),
-        parcel.readString(),
-        parcel.readString(),
         parcel.readString()
-    ) {
-    }
-
+        //parcel.readString(),
+        //parcel.readString(),
+        //parcel.readString()
+    )
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(Title)
         parcel.writeString(imdbID)
         parcel.writeString(Type)
         parcel.writeString(Year)
         parcel.writeString(Poster)
-        parcel.writeString(Plot)
-        parcel.writeString(imdbRating)
-        parcel.writeString(Runtime)
+        //parcel.writeString(Plot)
+        //parcel.writeString(imdbRating)
+        //parcel.writeString(Runtime)
     }
 
     override fun describeContents(): Int {

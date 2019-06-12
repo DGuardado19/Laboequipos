@@ -3,18 +3,14 @@ package com.dguardado19.laboequipos.gui.activities
 import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.ViewModelProviders
 import com.dguardado19.laboequipos.R
 import com.dguardado19.laboequipos.entities.Movie
 import com.dguardado19.laboequipos.gui.fragments.MainContentFragment
 import com.dguardado19.laboequipos.gui.fragments.MainListFragment
 import com.dguardado19.laboequipos.gui.utils.AppConstants
 import com.dguardado19.laboequipos.viewModel.peliculasViewModel
-import retrofit2.Retrofit
 
 class MainActivity : AppCompatActivity(), MainListFragment.SearchNewMovieListener {
     private lateinit var mainFragment : MainListFragment
@@ -24,10 +20,11 @@ class MainActivity : AppCompatActivity(), MainListFragment.SearchNewMovieListene
     private var movieList = ArrayList<Movie>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        peliculasViewModel = ViewModelProviders.of(this).get(com.dguardado19.laboequipos.viewModel.peliculasViewModel::class.java)
+        //peliculasViewModel = ViewModelProviders.of(this).get(peliculasViewModel::class.java)
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         movieList = savedInstanceState?.getParcelableArrayList(AppConstants.dataset_saveinstance_key) ?: ArrayList()
 
         initMainFragment()
@@ -41,10 +38,11 @@ class MainActivity : AppCompatActivity(), MainListFragment.SearchNewMovieListene
     fun initMainFragment(){
         mainFragment = MainListFragment.newInstance(movieList)
 
+
         val resource = if(resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT)
             R.id.main_fragment
         else {
-            mainContentFragment = MainContentFragment.newInstance(Movie("N/A","N/A","N/A","N/A","N/A","N/A","N/A","N/A"))
+            mainContentFragment = MainContentFragment.newInstance(Movie("N/A","N/A","N/A","N/A","N/A"))
             changeFragment(R.id.land_main_cont_fragment, mainContentFragment)
 
             R.id.land_main_fragment
@@ -53,7 +51,7 @@ class MainActivity : AppCompatActivity(), MainListFragment.SearchNewMovieListene
         changeFragment(resource, mainFragment)
     }
 
-    fun addMovieToList(movie: Movie) {
+    /*fun addMovieToList(movie: Movie) {
         movieList.add(movie)
         mainFragment.updateMoviesAdapter(movieList)
         Log.d("Number", movieList.size.toString())
@@ -62,13 +60,13 @@ class MainActivity : AppCompatActivity(), MainListFragment.SearchNewMovieListene
     fun changeMovieList(allMovies: LiveData<List<Movie>>) {
         movieList = allMovies.value as ArrayList<Movie>
         mainFragment.updateMoviesAdapter(movieList)
-    }
+    }*/
 
-    override fun searchMovie(movieName: String) {
+    /*override fun searchMovie(movieName: String) {
         changeMovieList(peliculasViewModel.getAllMovies())
        // addMovieToList(peliculasViewModel.getAllMovies())
        // FetchMovie().execute(movieName)
-    }
+    }*/
 
     override fun managePortraitItemClick(movie: Movie) {
         val movieBundle = Bundle()
