@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.cardview_movie.view.*
 class MovieAdapter(var movies: List<Movie>, val clickListener: (Movie) -> Unit): RecyclerView.Adapter<MovieAdapter.ViewHolder>(),
     MyMovieAdapter {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.cardview_movie, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.cardview, parent, false)
         return ViewHolder(view)
     }
     override fun getItemCount() = movies.size
@@ -33,7 +33,7 @@ class MovieAdapter(var movies: List<Movie>, val clickListener: (Movie) -> Unit):
                 .into(movie_image_cv)
 
             movie_title_cv.text = item.Title
-            movie_plot_cv.text = item.Plot
+            //movie_plot_cv.text = item.Plot
             movie_rate_cv.text = item.imdbRating
             movie_runtime_cv.text = item.Runtime
 
